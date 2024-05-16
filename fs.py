@@ -139,7 +139,7 @@ class Length(Feature):
 class Area(Feature):
     '''
     Features introspect their own `calculate` method to determine their dependencies.
-    So the DS or MLE doesn't ever excplicitly call `calculate` on a `Feature`. It gets
+    So the DS or MLE doesn't ever explicitly call `calculate` on a `Feature`. It gets
     called automatically when the `Entity` is accessed.
     '''
     entity: type = Rectangle
