@@ -315,7 +315,7 @@ class Session:
     def dump(self):
         for entity_type in self.entities:
             rich.print(f'Entity type: {entity_type.__name__}')
-            for data_source in session.data_sources_with_entity(entity_type):
+            for data_source in self.data_sources_with_entity(entity_type):
                 entity_name_keys = data_source.entity_name_keys(entity_type)
                 for row in data_source():
                     for entity_name_key in entity_name_keys:
