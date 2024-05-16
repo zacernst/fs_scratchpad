@@ -1,0 +1,4 @@
+rectangle_id,len_col,w_col,outline_only
+alice,10,3,true
+bob,2,4,false
+carol,3,5,false
