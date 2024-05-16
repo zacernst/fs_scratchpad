@@ -55,12 +55,6 @@ class Feature:
             if class_name_string != "return"
         ]
 
-    # @classmethod
-    # def _calculate(cls, entity: Entity):
-    #     for feature_name in cls.calculate.__annotations__.keys():
-    #         feature_class = get_feature_class_by_name(feature_name)
-    #         print(feature_name, feature_class)
-
 
 class Entity:
     name = "entity"
@@ -109,7 +103,8 @@ class Entity:
     def feature_list(cls):
         return cls.get_features()
 
-
+#### A data scientist or MLE would define the following classes in a separate file ####
+#### They wouldn't need to know about the classes defined above beyond just importing them. ####
 class Rectangle(Entity):
     '''
     A `Rectangle` is an `Entity` that has a `width` and a `length`, which would be
@@ -143,7 +138,9 @@ class Length(Feature):
 
 class Area(Feature):
     '''
-    Features introspect their own calculate method to determine their dependencies.
+    Features introspect their own `calculate` method to determine their dependencies.
+    So the DS or MLE doesn't ever excplicitly call `calculate` on a `Feature`. It gets
+    called automatically when the `Entity` is accessed.
     '''
     entity: type = Rectangle
     name: str = "area"
@@ -153,5 +150,8 @@ class Area(Feature):
 
 
 if __name__ == "__main__":
+    '''
+    We create a new `Rectangle` object and print it. This will trigger the calculations.
+    '''
     bob = Rectangle()
     print(bob)
